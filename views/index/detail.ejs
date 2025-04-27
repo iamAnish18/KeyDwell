@@ -1,0 +1,31 @@
+<% layout("layouts/boilerplate.ejs") %>
+    <div class="detail-box">
+        <h1>Listing Details</h1>
+        <p class="detail-imges"><img src="<%=HomeList.image.url%>" alt=""></p>
+        <h3>
+            <b>Title:<%=HomeList.title%></b>
+        </h3>
+        <p>
+            Description:<i><%=HomeList.description%></i>
+        </p>
+        <p>
+            Price: <span>&#8377</span><%=HomeList.price%>
+        </p>
+        <p>
+            Email:<%=HomeList.email_id%>
+        </p>
+        <p>
+            Location:<%=HomeList.location%>
+        </p>
+        <p>
+            Country:<%=HomeList.country%>
+        </p>
+        <p class="flex-box">
+        <a href="/HomeKey/<%=HomeList._id%>/edit" class="btn btn-primary">Edit</a>
+            <form action="/HomeKey/<%=HomeList._id%>?_method=delete" method="post">
+                <button class="btn btn-primary">Delete</button>
+            </form>
+        </p>
+    </div>
+
+    </html>
