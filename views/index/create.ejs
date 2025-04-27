@@ -1,0 +1,41 @@
+<% layout("layouts/boilerplate.ejs") %>
+    
+    <form action="/HomeKey" method="post">
+        <div class="mb-3">
+            <h1>Create</h1>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Title</b></label>
+            <input type="text" name="newhome[title]" placeholder="Enter Title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Description</b></label>
+            <textarea name="newhome[description]" placeholder="Enter Description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Image:url</b></label>
+            <input type="text" name="newhome[image.url]" placeholder="Enter image url">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Price</b></label>
+            <input type="number" name="newhome[price]" placeholder="Enter Price">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Email Address</b></label>
+            <input type="text" name="newhome[email_id]" placeholder="Enter Email address">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Location</b></label>
+            <input type="text" name="newhome[location]" placeholder="Enter Location">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Country</b></label>
+            <input type="text" name="newhome[country]" placeholder="Enter Country">
+        </div>
+    
+        <div class="mb-3">
+            <a class="btn btn-primary btn-center">Create</a>
+        </div>
+    </form>
+
+    </html>
