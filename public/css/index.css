@@ -1,136 +1,106 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    font-style: italic;
+    overflow-x: hidden;
 }
 
-html,
-body {
+html,body{
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: #F8F9FA;
 }
-
-.navbar {
-    height: 15vh;
-    font-size: 1.3vw;
-    background-color: white I !important;
+.navbar{
+    height: 5rem !important;
+    border-bottom: 1px solid black !important;
+}
+.list-box{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 2vw !important;
+}
+.navbar-brand img{
+    width: 2.5vw !important;
+}
+.nav-link:hover{
+    text-decoration: underline !important;
+    color: red !important;
+}
+.card{
+    border: none !important;
+    border-radius: 2.5vw !important;
+}
+.image-style img{
+    height: 40vh !important;
+    object-fit: cover !important;
+    border-radius: 2rem !important;
+}
+.btn:hover{
+    background-color: red !important;
+    border: none !important;
+}
+footer{
+    border-top: 1px solid black;
+    background-color: #F1EFEC;
+    color: red;
+    overflow: hidden;
+    height: 6rem !important;
+    text-align: center !important;
+}
+.itis{
     color: black !important;
 }
-
-.fa-compass {
-    color: red;
-    font-size: 1.3vw;
+.footer-link:hover{
+    text-decoration: none !important;
+    color: red !important;
+}
+.f-info-socials{
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1vw;
+}
+.fa-brands{
+    font-size: 2vw;
+}
+.detail-box {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(40%, 0px);
 }
 
-footer {
-    text-align: center;
-    font-size: 1.5vw;
-    background-color: grey;
-    color: black;
-}
-
-.row {
-    width: 100%;
-    justify-content: space-between;
-    padding-left: 0.5vw;
-}
-
-.card {
-    background-color: #F8F9FA !important;
-    border: none !important;
-    margin-bottom: 2rem !important;
-}
-
-.card-img-top {
-    padding-top: 1vw;
-    border-radius: 2vw !important;
+.detail-imges img{
+    width: 70% !important;
+    height: 60vh !important;
     object-fit: cover !important;
-    width: 100% !important;
-    height: 45vh;
-}
-
-.card:hover{
-    background-color: #FFE2E2 !important;
-    border: none !important;
     border-radius: 1vw !important;
 }
-.card-body {
-    padding: 0;
-}
-.main{
-    padding: 0vw 3vw 0vw 4vw !important;
-}
-/* .card-img-overlay{
-    opacity: 0;
-    background-color: #F8F9FA !important;
-}
-.card-img-overlay:hover{
-    opacity: 0.4;
-} */
-
-.form-text{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-}
-.box-form{
-    align-items: center;
-}
-
 .mb-3{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#boxbtn {
-    width: 10% !important;
-    background-color: #A72F45 !important;
-    color: white !important;
-    border: none !important;
-}
-
-#boxbtn a{
-    text-decoration: none;
-    color: white;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    padding-left: 12vw;
 }
 
 input,textarea{
-    border: 2px solid #A72F45;
-    border-radius: 1vw;
-    padding: 1vw;
-}
-.box-form{
-    padding-left: 18vw;
-}
-.btn:hover{
-    background-color: #A72F45 !important;
-    color: white !important;
-    border: none !important;
-}
-.heding{
-    font-size: 1.5vw !important;
-}
-.imges img{
-    width: 80vh !important;
-    object-fit: contain;
+    width: 80% !important;
+    padding: 0.5vw !important;
+    border: 2px solid red !important;
+    border-radius: 1vw !important;
 }
 
-.show-box{
-    padding-bottom: 2vw;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: translate(60%, 0px);
+.btn-center{
+    width: 15% !important;
+    background-color: red !important;
+    border: none !important;
 }
-.box-in{
-    display: flex;
-    align-items: center;
-    gap: 2vw;
+
+.btn-primary:hover{
+    background-color: blue !important;
+    color: #000 !important;
 }
