@@ -1,17 +1,38 @@
 <% layout("layouts/boilerplate.ejs") %>
-<body>
-    <h1>Update Listings</h1>
-    <form action="/listings/<%=listId._id%>?_method=put" method="post">
-        <input type="text" value="<%=listId.title%>">
-        <br> <br>
-        <textarea   cols="30" rows="10" value="<%=listId.description%> "></textarea> 
-        <br> <br>
-        <input type="number" value="<%=listId.price%>">
-        <br> <br>
-        <input type="text" value="<%=listId.location%>">
-        <br> <br>
-        <input type="text" value="<%=listId.country%>">
-        <br> <br>
-        <button>Sumit</button>
+<h1>Update Listings</h1>
+<div class="box-form">
+    <form action="/HomeKey/<%=newHomeid._id%>?_method=put" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Title</b></label>
+            <input type="text" value="<%=newHomeid.title%>" class="form-text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Description</b></label>
+            <textarea cols="10" rows="10" class="form-text"><%=newHomeid.description%></textarea> 
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Image:url</b></label>
+            <input type="text" value="<%=newHomeid.image.url%>" class="form-text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><span>&#8377;</span><b>Price</b></label>
+            <input type="number" value="<%=newHomeid.price%>" class="form-text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Email Address</b></label>
+            <input type="text" value="<%=newHomeid.email_id%>" class="form-text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Location</b></label>
+            <input type="text" value="<%=newHomeid.location%>" class="form-text">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"><b>Country</b></label>
+            <input type="text" value="<%=newHomeid.country%>" class="form-text">
+        </div>
+        <div class="mb-3 mb-3btn">
+            <a href="/HomeKey/<%=newHomeid._id%>/" class="btn btn-primary btn-center" >Sumit</a>
+        </div>
     </form>
-</body>
+</div>
+</html>
