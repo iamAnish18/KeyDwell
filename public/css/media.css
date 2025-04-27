@@ -1,0 +1,25 @@
+@media(max-width:500px){
+    .detail-imges img{
+        width: 95% !important;
+        border-radius: 2vw !important;
+    }
+    .navbar-brand img{
+        width: 12vw !important;
+    }
+    .navbar{
+        height: 10rem;
+    }
+    input,textarea{
+        width: 95% !important;
+        border-radius: 2vw !important;
+    }
+    .btn-center{
+        width: 25% !important; 
+    }
+    .fa-brands{
+        font-size: 8vw;
+    }
+    .f-info-socials{
+        gap: 4vw !important;
+    }
+}
