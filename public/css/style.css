@@ -13,6 +13,9 @@ html,body{
     min-height: 100vh;
     background-color: #F8F9FA;
 }
+#box{
+    text-align: center !important;
+}
 .navbar{
     height: 5rem !important;
     border-bottom: 1px solid black !important;
