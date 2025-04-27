@@ -1,30 +1,25 @@
 <% layout("layouts/boilerplate.ejs") %>
-
-    <body>
-
-        <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-            <%for(let list of allListing){%>
-                <div class="card col" style="width: 18rem;">
-                    <img src="<%=list.image%>" class="card-img-top" alt="list_image">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%=list.title%>
-                        </h5>
-                        <p class="card-text">
-                            <%= list.description%>
-                        </p>
-                        <p class="card-text">
-                            <%= list.price%> /Night
-                        </p>
-                        <p class="card-text">
-                            <%= list.location%>
-                        </p>
-                        <p class="card-text">
-                            <%= list.country%>
-                        </p>
-                        <a href="/listings/<%=list._id%>" class="btn btn-primary">Show Details</a>
-                    </div>
+    <!-- <form action="/HomeKey/add" method="get">
+        <button>Add more</button>
+    </form> -->
+    <h1>Listing</h1>
+    <div  class="list-box row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+        <%for(let list of HomeList){%>
+            <div class="card " style="width: 27rem;">
+                <p class="image-style">
+                    <img src="<%=list.image.url%>" class="card-img-top" alt="..."  style="width: 24rem;">
+                </p>
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <%=list.title%>
+                    </h3>
+                    <p class="card-text">
+                        <span>&#8377</span><%=list.price%>/night
+                    </p>
+                    <a href="/HomeKey/<%=list._id%>" class="btn btn-primary">More Details</a>
                 </div>
-                <%}%>
-        </div>
-    </body>
+            </div>
+            <%}%>
+    </div>
+
+    </html>
