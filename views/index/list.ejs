@@ -1,25 +1,21 @@
 <% layout("layouts/boilerplate.ejs") %>
-    <!-- <form action="/HomeKey/add" method="get">
-        <button>Add more</button>
-    </form> -->
-    <h1>Listing</h1>
-    <div  class="list-box row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-        <%for(let list of HomeList){%>
-            <div class="card " style="width: 27rem;">
-                <p class="image-style">
-                    <img src="<%=list.image.url%>" class="card-img-top" alt="..."  style="width: 24rem;">
-                </p>
+
+<h1>All Listing</h1>
+    <div class="list-box row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+        <%for(let allhome of insertdata){%>
+            <div class="card" style="width: 25rem;">
+                <img src="<%= allhome.image.url%>" class="card-img-top">
                 <div class="card-body">
                     <h3 class="card-title">
-                        <%=list.title%>
+                        <%=allhome.title%>
                     </h3>
-                    <p class="card-text">
-                        <span>&#8377</span><%=list.price%>/night
+                    <p class="card-text"><span>&#8377</span>
+                        <%=allhome.price%>/night
                     </p>
-                    <a href="/HomeKey/<%=list._id%>" class="btn btn-primary">More Details</a>
+                    <a href="/homeKey/<%=allhome._id%>" class="btn btn-primary">So More.</a>
                 </div>
             </div>
-            <%}%>
+        <%}%>
     </div>
 
     </html>
