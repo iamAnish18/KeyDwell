@@ -1,0 +1,39 @@
+<% layout("layouts/form.ejs") %>
+
+<form method="post" action="/homeKey">
+  <div class="mb-3">
+    <h2>Create New Listing</h2>
+  </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input type="text" class="form-control" name="newhome[title]">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Description</label>
+        <textarea name="newhome[description]" cols="10" rows="5" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Image</label>
+      <input type="url" class="form-control" >
+      <div id="emailHelp" class="form-text" newhome[image.url]>Image will pass in url formate.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Price</label>
+      <input type="number" class="form-control" newhome[price]>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Email Address</label>
+      <input type="email" class="form-control" newhome[email_id]>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Location</label>
+      <input type="text" class="form-control" newhome[location]>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Country</label>
+      <input type="text" class="form-control" newhome[country]>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</html>
