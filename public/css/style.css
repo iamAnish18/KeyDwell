@@ -1,109 +1,96 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    overflow-x: hidden;
+    font-style: italic;
 }
 
-html,body{
+html,
+body {
     width: 100%;
     min-height: 100vh;
-    background-color: #F8F9FA;
-}
-#box{
-    text-align: center !important;
 }
 .navbar{
-    height: 5rem !important;
-    border-bottom: 1px solid black !important;
-}
-.list-box{
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 2vw !important;
+    height: 14vh !important;
 }
 .navbar-brand img{
-    width: 2.5vw !important;
+    height: 3vw !important;
 }
-.nav-link:hover{
-    text-decoration: underline !important;
-    color: red !important;
+
+#header-box{
+    text-align: center !important;
+    overflow-x: hidden !important;
+}
+
+.list-box{
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
 }
 .card{
     border: none !important;
-    border-radius: 2.5vw !important;
-}
-.image-style img{
-    height: 40vh !important;
-    object-fit: cover !important;
     border-radius: 2rem !important;
 }
-.btn:hover{
-    background-color: red !important;
-    border: none !important;
-}
-footer{
-    border-top: 1px solid black;
-    background-color: #F1EFEC;
-    color: red;
-    overflow: hidden;
-    height: 6rem !important;
-    text-align: center !important;
-}
-.itis{
-    color: black !important;
-}
-.footer-link:hover{
-    text-decoration: none !important;
-    color: red !important;
-}
-.f-info-socials{
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1vw;
-}
-.fa-brands{
-    font-size: 2vw;
-}
-.detail-box {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: translate(40%, 0px);
+.card:hover{
+    background-color: #EFEEEA !important;
 }
 
-.detail-imges img{
-    width: 70% !important;
+.card-img-top{
+    width: 23rem !important;
     height: 60vh !important;
     object-fit: cover !important;
-    border-radius: 1vw !important;
+    border: none !important;
+    border-radius: 2rem !important;
+    margin-top: 1rem !important;
 }
-.mb-3{
+
+.card-img-show{
+    width: 80% !important;
+    height: 50vh !important;
+    object-fit: cover !important;
+    border: none !important;
+    border-radius: 2rem !important;
+    margin-top: 1.5rem !important;
+}
+.show-box{
     display: flex !important;
-    justify-content: center !important;
     flex-direction: column !important;
-    padding-left: 12vw;
+    align-items: center !important;
+    transform: translate(52%,0);
+}
+
+.list-group-item{
+    width: 50vw !important;
 }
 
 input,textarea{
     width: 80% !important;
     padding: 0.5vw !important;
-    border: 2px solid red !important;
-    border-radius: 1vw !important;
+    border: 1px solid red !important;
 }
 
-.btn-center{
-    width: 15% !important;
-    background-color: red !important;
-    border: none !important;
+.mb-3{
+    padding-left: 20vw !important;
+}
+
+.mb-3-more{
+    padding-left: 50vw !important;
+}
+
+h2{
+    width: 26%;
+    border-bottom: 1px solid black;
+}
+
+h1{
+    text-decoration: underline;
 }
 
 .btn-primary:hover{
-    background-color: blue !important;
-    color: #000 !important;
+    background-color: red !important;
+    color: black !important;
+    border: none !important;
 }
