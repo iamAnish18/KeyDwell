@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const HomeSchema = new mongoose.Schema({
+const homeKeySchema = new mongoose.Schema({
     title : {
-        type : String,
+        type : String
     },
     description : {
         type : String
@@ -12,18 +12,17 @@ const HomeSchema = new mongoose.Schema({
         url : String
     },
     price : {
-        type : Number,
+        type : Number
     },
-    email_id : {
-        type : String,
+    email_id :{
+        type : String
     },
     location : {
-        type : String,
+        type : String
     },
-    country : {
-        type : String,
+    country :{
+        type:String
     }
 });
-
-const HomeKey = mongoose.model("HomeKey",HomeSchema);
+const HomeKey = new mongoose.model("HomeKey" , homeKeySchema)
 module.exports = HomeKey;
