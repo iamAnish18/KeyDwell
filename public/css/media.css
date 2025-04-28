@@ -1,25 +1,56 @@
-@media(max-width:500px){
-    .detail-imges img{
+@media(max-width:400px) {
+
+    .navbar-brand img {
+        width: 10vw !important;
+    }
+    .card-img-top{
+        width: 20rem !important;
+    }
+    .card{
+        width: 22rem !important;
+    }
+}
+
+@media(max-width:550px) {
+    .card-img-top{
+        width: 30rem !important;
+    }
+    .card{
+        width: 32rem !important;
+    }
+    .card-img-show{
+        width: 95vw !important;
+    }
+    .card-title{
+        width: 95vw !important;
+    }
+    .card-body{
+        font-size: 3.5vw !important;
+    }
+    .show-body{
         width: 95% !important;
-        border-radius: 2vw !important;
+        font-size: 3.2vw !important;
     }
-    .navbar-brand img{
-        width: 12vw !important;
+    .navbar-brand img {
+        height: 13vw !important;
     }
-    .navbar{
-        height: 10rem;
+    .mb-3{
+        padding-left: 1vw !important;
+    }
+    h2{
+        width: 50% !important;
     }
     input,textarea{
-        width: 95% !important;
-        border-radius: 2vw !important;
+        width: 98% !important;
+        border-radius: 3vw !important;
+        padding-left: 2vw !important;
+        padding: 3vw !important;
+        font-size: 3.5vw !important;
     }
-    .btn-center{
-        width: 25% !important; 
+    label{
+        font-size: 4.5vw !important;
     }
-    .fa-brands{
-        font-size: 8vw;
-    }
-    .f-info-socials{
-        gap: 4vw !important;
+    .mb-3-more {
+        padding-left: 44vw !important;
     }
 }
