@@ -1,6 +1,7 @@
+const { urlencoded } = require('express');
 const mongoose = require('mongoose');
 
-const homeKeySchema = new mongoose.Schema({
+const KeyDwellListing = new mongoose.Schema({
     title : {
         type : String
     },
@@ -14,15 +15,15 @@ const homeKeySchema = new mongoose.Schema({
     price : {
         type : Number
     },
-    email_id :{
+    email_id : {
         type : String
     },
     location : {
         type : String
     },
-    country :{
-        type:String
+    country : {
+        type : String
     }
 });
-const HomeKey = new mongoose.model("HomeKey" , homeKeySchema)
-module.exports = HomeKey;
+const KeyDwell = new mongoose.model("KeyDwell" , KeyDwellListing);
+module.exports = KeyDwell;
