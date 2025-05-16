@@ -1,7 +1,5 @@
-const { urlencoded } = require('express');
 const mongoose = require('mongoose');
-
-const KeyDwellListing = new mongoose.Schema({
+let keydata = new mongoose.Schema({
     title : {
         type : String
     },
@@ -25,5 +23,5 @@ const KeyDwellListing = new mongoose.Schema({
         type : String
     }
 });
-const KeyDwell = new mongoose.model("KeyDwell" , KeyDwellListing);
-module.exports = KeyDwell;
+const Keydwell = new mongoose.model("Keydwell" , keydata);
+module.exports = Keydwell;
