@@ -1,0 +1,37 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <form method="POST" action="/Keydwell/show/<%=updatedata._id%>?_method=PUT">
+        <div class="mb-3">
+            <h2>Edit Listing</h2>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>Title</b></label>
+            <input type="text" class="form-control" name="updatedata[title]" value="<%= updatedata.title %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>Description</b></label>
+            <textarea name="updatedata[description]" cols="10" rows="5"
+                class="form-control"><%= updatedata.description%></textarea>
+        </div>
+        <!-- image sections -->
+        <div class="mb-3">
+            <label class="form-label"><b>Price</b></label>
+            <input type="number" class="form-control" name="updatedata[price]" value="<%= updatedata.price %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>Email Address</b></label>
+            <input type="email" class="form-control" name="updatedata[email_id]" value="<%= updatedata.email_id %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>Location</b></label>
+            <input type="text" class="form-control" name="updatedata[location]" value="<%= updatedata.location %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>Country</b></label>
+            <input type="text" class="form-control" name="updatedata[country]" value="<%= updatedata.country %>">
+        </div>
+        <div class="mb-3-more">
+            <button class="btn btn-primary create">Sumit</button>
+        </div>
+    </form>
+    
