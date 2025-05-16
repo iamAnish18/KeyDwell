@@ -1,0 +1,18 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <h1>All Listing</h1>
+
+    <%for(let box of homedata){%>
+        <div class="card" style="width: 22rem;">
+                <img src="<%=box.image.url%>" class="card-img-top" alt="some error">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Title : </b>
+                        <%=box.title%>
+                    </h5>
+                    <p class="card-text"><b>Price : </b>
+                        <%=box.price%>
+                    </p>
+                    <a href="/Keydwell/show/<%=box._id%>" class="btn btn-primary">So More.</a>
+                </div>
+        </div>
+    <%}%>
