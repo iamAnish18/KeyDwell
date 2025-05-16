@@ -1,0 +1,23 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <img src="<%=showdata.image.url%>" alt="some error">
+    <h4><b>Title : </b>
+        <%=showdata.title%>
+    </h4>
+    <h5><b>Description : </b>
+        <%=showdata.description%>
+    </h5>
+    <h5><b>Price : </b><span>&#8377</span><%=showdata.price.toLocaleString("en-IN")%></h5>
+    <h5><b>Email Address : </b>
+        <%=showdata.email_id%>
+    </h5>
+    <h5><b>Location : </b>
+        <%=showdata.location%>
+    </h5>
+    <h5><b>Country : </b>
+        <%=showdata.country%>
+    </h5>
+    <a href="/Keydwell/<%=showdata._id%>/Update" class="btn btn-primary">Edit</a>
+    <form action="/Keydwell/show/<%=showdata._id%>?_method=delete" method="post">
+        <button class="btn btn-danger">Delete</button>
+    </form>
