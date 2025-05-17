@@ -1,101 +1,96 @@
 const express = require('express');
 let app = express();
-const port = 8080;
+const port = 3000;
 const path = require('path');
 const ejsMate = require('ejs-mate');
+const Override = require('method-override');
+const wrapAsync = require('./utily/wrapAsync.js');
+const expressError = require('./utily/expressError.js');
+const { keydataSchema } = require('./joi.js');
+
+// database
 const mongoose = require('mongoose');
-const HomeKey = require('./models/schema');
-const methodOverride = require("method-override");
-const wrapAsync = require("./unit/wrap")
-const ExpressError = require("./unit/expressError");
-const {newhomeSchema} = require("./joi.js");
+const KeyDwellSchema = require('./models/schema');
 
 main()
     .then(() => {
-        console.log('Database is connected')
-    })
-    .catch(err => {
+        console.log(`database is connected`)
+    }).catch((err) => {
         console.log(err)
     });
-
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/homeKey');
+    await mongoose.connect('mongodb://127.0.0.1:27017/KeyDwell');
 }
-//Middleware
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
-app.use(methodOverride("_method"));
+app.use(Override('_method'));
+// error handling of form
+const keydataValidation = (req,res,next) =>{
+    let {error} = keydataSchema.validate(req.body);
+    if(error){
+        let errMsg = error.details.map(el =>el.message).join(",")
+        throw new expressError(400 , errMsg);
+    }else{
+        next();
+    }
+}
+// Server route
 
-//Server
-
-//index route
-app.get("/homeKey",wrapAsync( async (req, res) => {//pass
-    let insertdata = await HomeKey.find({});
-    res.render('index/list.ejs', { insertdata });
+app.get("/Keydwell/home", wrapAsync(async (req, res) => {
+    let homedata = await KeyDwellSchema.find({});
+    res.render('ejs/home.ejs', { homedata });
 }));
-
-//Create route
-app.get("/homeKey/add", (req, res) => {//pass
-    res.render('index/add.ejs');
+// create route
+app.get("/Keydwell/create", (req, res) => {
+    res.render('ejs/create.ejs')
 });
-app.post("/homeKey", wrapAsync(async (req, res) => {
-    let result = newhomeSchema.validate(req.body);
-    console.log(result);
-    if(result.error){
-        throw new Error(400 , "validations error");
-    }
-    const newHome = new HomeKey(req.body.newhome);
-    await newHome.save();
-    res.redirect('/homeKey');
+app.post("/Keydwell/home",keydataValidation, wrapAsync(async (req, res) => {
+    let createdata = new KeyDwellSchema(req.body.newhome);
+    console.log(createdata);
+    await createdata.save();
+    res.redirect('/Keydwell/home');
 }));
-//edit route
-app.get("/homeKey/:id/edit", wrapAsync(async (req, res) => {
+// update route
+app.get("/Keydwell/:id/Update", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let editHome = await HomeKey.findById(id);
-    res.render('index/edit.ejs', { editHome });
+    let updatedata = await KeyDwellSchema.findById(id);
+    res.render('ejs/update.ejs', { updatedata });
 }));
-
-// PUT to update the data
-app.put("/homeKey/:id", wrapAsync(async (req, res) => {
-    if(!req.body.editHome){
-        throw new ExpressError(400 , "Enter Valid data")
-    }
+app.put("/Keydwell/show/:id",keydataValidation, wrapAsync(async (req, res) => {
     let { id } = req.params;
-    await HomeKey.findByIdAndUpdate(id, { ...req.body.editHome });
-    res.redirect(`/homeKey/${id}`);
+    await KeyDwellSchema.findByIdAndUpdate(id, { ...req.body.updatedata });
+    res.redirect(`/Keydwell/show/${id}`);
 }));
 
-
-//delete route
-app.delete("/homeKey/:id", wrapAsync(async (req, res) => {
+// delete route
+app.delete("/Keydwell/show/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let deleteHome = await HomeKey.findByIdAndDelete(id);
-    console.log(deleteHome);
-    res.redirect('/homeKey');
+    let deletedata = await KeyDwellSchema.findByIdAndDelete(id);
+    console.log(deletedata);
+    res.redirect('/Keydwell/home');
 }));
-//show route
-app.get("/homeKey/:id", wrapAsync(async (req, res) => {
+
+app.get("/Keydwell/show/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let showData = await HomeKey.findById(id);
-    res.render('index/show.ejs', { showData });
+    let showdata = await KeyDwellSchema.findById(id);
+    res.render('ejs/show.ejs', { showdata });
 }));
 
-// app.all("*" , (req,res)=>{
-//     throw new ExpressError(404,"Page is not found");
-//     // next(new ExpressError(404,"Page is not found"))
-// });
-
-//error handling
-app.use(( err , req, res, next) => {
-    let {status=500,message="Something went wrong"} = err;
-    res.render("index/error.ejs" , {err});
-    // res.status(status).send(message);
+// page not found
+app.all("*", (req, res, next) => {
+    next(new expressError(404, "Page Not found"))
 })
+app.use((err, req, res, next) => {
+    let { status = 500, message = "Enter Wrong input" } = err;
+    res.status(status).send(message);
+});
+
 app.listen(port, () => {
     console.log(`Server is running on ${port}`)
-})
+});
