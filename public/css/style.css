@@ -1,96 +1,91 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
+.sansation-bold-italic {
+  font-family: "Sansation", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }
 
-html,
-body {
-    width: 100%;
-    min-height: 100vh;
+a{
+  text-decoration: none !important;
+  color: black !important;
 }
-.navbar{
-    height: 14vh !important;
+a:hover{
+  color: red !important;
 }
-.navbar-brand img{
-    height: 3vw !important;
+.nav-underline {
+  height: 5vh !important;
+  background-color: #FAF1E6 !important;
+  padding: 2.5vw !important;
+}
+/* main box of boilerplate */
+body{
+  overflow-x: hidden !important;
+  background-color: #EFF3EA !important;
+}
+img{
+  width: 100% !important;
+  height: 45vh !important;
+  object-fit: cover !important;
+  border-radius: 1rem !important;
+  margin-top: 1.5vw !important;
+}
+.home-box{
+  padding: 2vw !important;
+  margin-bottom: 3rem !important;
 }
 
-#header-box{
-    text-align: center !important;
-    overflow-x: hidden !important;
-}
-
-.list-box{
-    display: flex !important;
-    justify-content: space-around !important;
-    align-items: center !important;
-}
 .card{
-    border: none !important;
-    border-radius: 2rem !important;
+  border: none !important;
+  height: 75vh !important;
+  border-radius: 1.5vw !important;
+  margin-bottom: 1.5vw !important;
+  background-color: #EFF3EA !important;
 }
+
 .card:hover{
-    background-color: #EFEEEA !important;
+  background-color: #D7D3BF !important;
 }
 
-.card-img-top{
-    width: 23rem !important;
-    height: 60vh !important;
-    object-fit: cover !important;
-    border: none !important;
-    border-radius: 2rem !important;
-    margin-top: 1rem !important;
+h4{
+  font-weight: bold !important;
+  font-size: 1.5vw !important;
+  margin-bottom: 1vw !important;
+
+}
+h5{
+  font-weight: 500 !important;
+  font-size: 1.3vw !important;
+  margin-bottom: 1vw !important;
 }
 
-.card-img-show{
-    width: 80% !important;
-    height: 50vh !important;
-    object-fit: cover !important;
-    border: none !important;
-    border-radius: 2rem !important;
-    margin-top: 1.5rem !important;
+.btn-box{
+  display: flex !important;
+  align-items: center !important;
+  gap: 2vw !important;
 }
+
 .show-box{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    transform: translate(52%,0);
+  padding-left: 20vw !important;
+  padding-right: 20vw !important;
+  margin-bottom: 1vw !important;
+}
+.show-img{
+  height: 70vh !important;
+  margin-bottom: 1vw !important;
 }
 
-.list-group-item{
-    width: 50vw !important;
+.form-box{
+  padding-left: 10vw !important;
+  padding-right: 10vw !important;
 }
 
 input,textarea{
-    width: 80% !important;
-    padding: 0.5vw !important;
-    border: 1px solid red !important;
+  border: 1px solid black !important;
+  border-radius: 1vw !important;
+  padding-left: 2vw !important;
 }
 
-.mb-3{
-    padding-left: 20vw !important;
-}
-
-.mb-3-more{
-    padding-left: 50vw !important;
-}
-
-h2{
-    width: 26%;
-    border-bottom: 1px solid black;
-}
-
-h1{
-    text-decoration: underline;
-}
-
-.btn-primary:hover{
-    background-color: red !important;
-    color: black !important;
-    border: none !important;
+.main{
+  font-weight: 500 !important;
+  margin-bottom: 1vw !important;
+  text-decoration: underline !important;
 }
