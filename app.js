@@ -6,11 +6,13 @@ const ejsMate = require('ejs-mate');
 const Override = require('method-override');
 const wrapAsync = require('./utily/wrapAsync.js');
 const expressError = require('./utily/expressError.js');
-const { keydataSchema } = require('./joi.js');
+const { keydataSchema, reviewsSchema } = require('./joi.js');
+
 
 // database
 const mongoose = require('mongoose');
 const KeyDwellSchema = require('./models/schema');
+const Reviews = require('./models/review.js');
 
 main()
     .then(() => {
@@ -31,12 +33,21 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 app.use(Override('_method'));
 // error handling of form
-const keydataValidation = (req,res,next) =>{
-    let {error} = keydataSchema.validate(req.body);
-    if(error){
-        let errMsg = error.details.map(el =>el.message).join(",")
-        throw new expressError(400 , errMsg);
-    }else{
+const keydataValidation = (req, res, next) => {
+    let { error } = keydataSchema.validate(req.body);
+    if (error) {
+        let errMsg = error.details.map(el => el.message).join(",")
+        throw new expressError(400, errMsg);
+    } else {
+        next();
+    }
+}
+const reviewsValidation = (req, res, next) => {
+    let { error } = reviewsSchema.validate(req.body);
+    if (error) {
+        let errMsg = error.details.map(el => el.message).join(",")
+        throw new expressError(400, errMsg);
+    } else {
         next();
     }
 }
@@ -50,7 +61,7 @@ app.get("/Keydwell/home", wrapAsync(async (req, res) => {
 app.get("/Keydwell/create", (req, res) => {
     res.render('ejs/create.ejs')
 });
-app.post("/Keydwell/home",keydataValidation, wrapAsync(async (req, res) => {
+app.post("/Keydwell/home", keydataValidation, wrapAsync(async (req, res) => {
     let createdata = new KeyDwellSchema(req.body.newhome);
     console.log(createdata);
     await createdata.save();
@@ -62,7 +73,7 @@ app.get("/Keydwell/:id/Update", wrapAsync(async (req, res) => {
     let updatedata = await KeyDwellSchema.findById(id);
     res.render('ejs/update.ejs', { updatedata });
 }));
-app.put("/Keydwell/show/:id",keydataValidation, wrapAsync(async (req, res) => {
+app.put("/Keydwell/show/:id", keydataValidation, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await KeyDwellSchema.findByIdAndUpdate(id, { ...req.body.updatedata });
     res.redirect(`/Keydwell/show/${id}`);
@@ -75,12 +86,30 @@ app.delete("/Keydwell/show/:id", wrapAsync(async (req, res) => {
     console.log(deletedata);
     res.redirect('/Keydwell/home');
 }));
+// reviews route they not in git
+app.post("/Keydwell/:id/reviews", reviewsValidation, async (req, res) => {
+    let hotelreview = await KeyDwellSchema.findById(req.params.id);
+    let newreview = new Reviews(req.body.reviews);
+
+    hotelreview.reviews.push(newreview);
+    await hotelreview.save();
+    await newreview.save();
+    res.redirect(`/Keydwell/show/${hotelreview._id}`);
+});
+// reviews delete route
+app.delete("/Keydwell/:id/reviews/:reviewsId" , wrapAsync(async(req,res)=>{
+    let {id , reviewsId} = req.params;
+    await KeyDwellSchema.findByIdAndUpdate(id , {$pull : {reviews : reviewsId}});
+    await Reviews.findByIdAndDelete(reviewsId);
+    res.redirect(`/Keydwell/show/${id}`);
+}));
 
 app.get("/Keydwell/show/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let showdata = await KeyDwellSchema.findById(id);
+    let showdata = await KeyDwellSchema.findById(id).populate('reviews');
     res.render('ejs/show.ejs', { showdata });
 }));
+
 
 // page not found
 app.all("*", (req, res, next) => {
