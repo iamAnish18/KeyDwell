@@ -4,9 +4,11 @@ const port = 3000;
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const Override = require('method-override');
-const wrapAsync = require('./utily/wrapAsync.js');
 const expressError = require('./utily/expressError.js');
-const { keydataSchema, reviewsSchema } = require('./joi.js');
+const keydwell = require('./routes/keydwell.js');
+const reviews = require('./routes/reviews.js');
+const Session = require('express-session');
+const flash = require('connect-flash');
 
 
 // database
@@ -23,6 +25,16 @@ main()
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/KeyDwell');
 }
+const sessionOutput = {
+    secret : "mysupersectecode",
+    resave : false,
+    saveUnitialized : true,
+    cookies : {
+        expires : Date.now() +7 *24*60*60*1000 ,
+        maxAge : 7*24*60*60*1000,
+        httpOnly : true //it will protect crock scpriting attackes
+    }
+}
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,84 +44,22 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 app.use(Override('_method'));
-// error handling of form
-const keydataValidation = (req, res, next) => {
-    let { error } = keydataSchema.validate(req.body);
-    if (error) {
-        let errMsg = error.details.map(el => el.message).join(",")
-        throw new expressError(400, errMsg);
-    } else {
-        next();
-    }
-}
-const reviewsValidation = (req, res, next) => {
-    let { error } = reviewsSchema.validate(req.body);
-    if (error) {
-        let errMsg = error.details.map(el => el.message).join(",")
-        throw new expressError(400, errMsg);
-    } else {
-        next();
-    }
-}
+// 
+app.use(Session(sessionOutput));
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
+
+
 // Server route
+app.use('/Keydwell' , keydwell);
+// reviews route 
 
-app.get("/Keydwell/home", wrapAsync(async (req, res) => {
-    let homedata = await KeyDwellSchema.find({});
-    res.render('ejs/home.ejs', { homedata });
-}));
-// create route
-app.get("/Keydwell/create", (req, res) => {
-    res.render('ejs/create.ejs')
-});
-app.post("/Keydwell/home", keydataValidation, wrapAsync(async (req, res) => {
-    let createdata = new KeyDwellSchema(req.body.newhome);
-    console.log(createdata);
-    await createdata.save();
-    res.redirect('/Keydwell/home');
-}));
-// update route
-app.get("/Keydwell/:id/Update", wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let updatedata = await KeyDwellSchema.findById(id);
-    res.render('ejs/update.ejs', { updatedata });
-}));
-app.put("/Keydwell/show/:id", keydataValidation, wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    await KeyDwellSchema.findByIdAndUpdate(id, { ...req.body.updatedata });
-    res.redirect(`/Keydwell/show/${id}`);
-}));
-
-// delete route
-app.delete("/Keydwell/show/:id", wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let deletedata = await KeyDwellSchema.findByIdAndDelete(id);
-    console.log(deletedata);
-    res.redirect('/Keydwell/home');
-}));
-// reviews route they not in git
-app.post("/Keydwell/:id/reviews", reviewsValidation, async (req, res) => {
-    let hotelreview = await KeyDwellSchema.findById(req.params.id);
-    let newreview = new Reviews(req.body.reviews);
-
-    hotelreview.reviews.push(newreview);
-    await hotelreview.save();
-    await newreview.save();
-    res.redirect(`/Keydwell/show/${hotelreview._id}`);
-});
-// reviews delete route
-app.delete("/Keydwell/:id/reviews/:reviewsId" , wrapAsync(async(req,res)=>{
-    let {id , reviewsId} = req.params;
-    await KeyDwellSchema.findByIdAndUpdate(id , {$pull : {reviews : reviewsId}});
-    await Reviews.findByIdAndDelete(reviewsId);
-    res.redirect(`/Keydwell/show/${id}`);
-}));
-
-app.get("/Keydwell/show/:id", wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let showdata = await KeyDwellSchema.findById(id).populate('reviews');
-    res.render('ejs/show.ejs', { showdata });
-}));
-
+app.use('/Keydwell' , reviews);
 
 // page not found
 app.all("*", (req, res, next) => {
