@@ -1,0 +1,25 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <div class="row mt-3">
+        <div id="signIN-box">
+            <h1 class="offset-3">Log In</h1>
+            <div class="col-6 offset-3">
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label class="form-label"><b>Username</b></label>
+                        <input type="text" required class="form-control" name="username">
+                        <div class="invalid-feedback">Please Enter Title Name</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><b>Email Address</b></label>
+                        <input type="email" required class="form-control" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><b>Password</b></label>
+                        <input type="password" required class="form-control" name="password">
+                    </div>
+                    <button class="btn btn-primary">Sumit</button>
+                </form>
+            </div>
+        </div>
+    </div>
