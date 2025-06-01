@@ -1,56 +1,89 @@
-@media(max-width:400px) {
+@media (max-width:800px) {
+    .row {
+        display: flex !important;
+        flex-direction: column !important;
+    }
 
-    .navbar-brand img {
-        width: 10vw !important;
+    .home-box {
+        align-items: center !important;
     }
-    .card-img-top{
-        width: 20rem !important;
+
+    .card {
+        width: 50rem !important;
+        height: 75vh !important;
     }
-    .card{
-        width: 22rem !important;
+
+    .home-img {
+        width: 100% !important;
+        height: 50vh !important;
+    }
+
+    .card-body {
+        height: 20vh !important;
+    }
+
+    h5,
+    h4,
+    h2 {
+        font-size: 3.5vw !important;
+    }
+
+    p {
+        font-size: 3vw !important;
+    }
+
+    .btn {
+        font-size: 2.5vw !important;
+    }
+
+    .show-box {
+        padding-left: 0vw !important;
+        padding-right: 0vw !important;
+    }
+
+    .nav {
+        font-size: 2rem !important;
+        height: 8vh !important;
+    }
+
+    a {
+        font-size: 3vw !important;
+    }
+
+    input,
+    textarea {
+        padding-left: 1rem !important;
+        width: 95% !important;
+        font-size: 1.5rem !important;
+        border-radius: 2rem !important;
+    }
+
+    .form-box {
+        padding-left: 0vw !important;
+        padding-right: 0vw !important;
+        align-items: center !important;
+    }
+
+    .form-text {
+        font-size: 1.3rem !important;
+    }
+
+    .main {
+        padding-left: 1rem !important;
+        font-size: 2rem !important;
     }
 }
 
-@media(max-width:550px) {
-    .card-img-top{
-        width: 30rem !important;
-    }
-    .card{
-        width: 32rem !important;
-    }
-    .card-img-show{
-        width: 95vw !important;
-    }
-    .card-title{
-        width: 95vw !important;
-    }
-    .card-body{
-        font-size: 3.5vw !important;
-    }
-    .show-body{
-        width: 95% !important;
-        font-size: 3.2vw !important;
-    }
-    .navbar-brand img {
-        height: 13vw !important;
-    }
-    .mb-3{
-        padding-left: 1vw !important;
-    }
-    h2{
-        width: 50% !important;
-    }
-    input,textarea{
-        width: 98% !important;
-        border-radius: 3vw !important;
-        padding-left: 2vw !important;
-        padding: 3vw !important;
-        font-size: 3.5vw !important;
-    }
-    label{
-        font-size: 4.5vw !important;
-    }
-    .mb-3-more {
-        padding-left: 44vw !important;
-    }
+#reviews-card {
+    height: 65vh !important;
+    border: 1px solid black !important;
+}
+
+.review-holder {
+    border-bottom: 1px solid black !important;
+    font-size: 2.5vw !important;
+}
+
+#KeyDwell-box {
+    padding-left: 1vw !important;
 }
