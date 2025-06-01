@@ -12,10 +12,24 @@ a:hover{
   color: red !important;
 }
 .nav-underline {
-  height: 5vh !important;
-  background-color: #FAF1E6 !important;
-  padding: 2.5vw !important;
+  padding: 1vw 1vw 1vw 1vw !important;
+  height: 14vh !important;
+  background-color: #E1E1E1 !important;
+  padding-left: 2.5vw !important;
+  border-bottom: 1px solid black !important;
+  display: flex !important;
+  justify-content: space-between !important;
 }
+.alllisting{
+  display: flex !important;
+  gap: 2vw !important;
+}
+
+.gap{
+  display: flex !important;
+  gap: 2vw !important;
+}
+
 /* main box of boilerplate */
 body{
   overflow-x: hidden !important;
@@ -36,6 +50,7 @@ img{
 .card{
   border: none !important;
   height: 75vh !important;
+  width: 24.5rem !important;
   border-radius: 1.5vw !important;
   margin-bottom: 1.5vw !important;
   background-color: #EFF3EA !important;
@@ -88,4 +103,11 @@ input,textarea{
   font-weight: 500 !important;
   margin-bottom: 1vw !important;
   text-decoration: underline !important;
+}
+
+/* review section */
+#reviews-card{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
