@@ -4,19 +4,21 @@
         <div id="signIN-box">
             <h1 class="offset-3">Sign In</h1>
             <div class="col-6 offset-3">
-                <form action="/signIn" method="post">
+                <form action="/signIn" method="post" novalidate class="needs-validation">
                     <div class="mb-3">
                         <label class="form-label"><b>Username</b></label>
                         <input type="text" required class="form-control" name="username">
-                        <div class="invalid-feedback">Please Enter Title Name</div>
+                        <div class="invalid-feedback">Please Enter Username Name</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><b>Email Address</b></label>
                         <input type="email" required class="form-control" name="email">
+                        <div class="invalid-feedback">Please Enter Email Address</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label"><b>Password</b></label>
                         <input type="password" required class="form-control" name="password">
+                        <div class="invalid-feedback">Please Enter Password</div>
                     </div>
                     <button class="btn btn-primary">Sumit</button>
                 </form>
