@@ -13,6 +13,8 @@ async function main() {
 
 let insert =async () =>{
     await KeyDwellSchema.deleteMany({});
+    KeyDwelldb.data = KeyDwelldb.data.map((obj) =>
+        ({ ...obj, owner: "683d5c6108d48739d1f88467" }));
     await KeyDwellSchema.insertMany(KeyDwelldb.data)
 }
 
