@@ -1,18 +1,34 @@
 <% layout("layouts/boilerplate.ejs") %>
 
-    <div class="home-box row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <%for(let box of homedata){%>
-            <div class="card col" style="width: 24rem;">
-                <img src="<%=box.image.url%>" class="card-img-top" alt="some error">
-                <div class="card-body">
-                    <h5 class="card-title"><b>Title : </b>
-                        <%=box.title%>
-                    </h5>
-                    <p class="card-text"><b>Price : </b>
-                        <span>&#8377</span><%=box.price.toLocaleString("en-IN")%>
-                    </p>
-                    <a href="/Keydwell/show/<%=box._id%>" class="btn btn-primary">So More.</a>
+    <%if( success && success.length>0){%>
+        <div class="alert alert-primary alert-dismissible fade show " role="alert">
+            <%= success %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <%}%>
+            <%if( error && error.length>0){%>
+                <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                    <%= error %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            </div>
-            <%}%>
-    </div>
+                <%}%>
+
+
+                    <div class="home-box row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+                        <%for(let box of homedata){%>
+                            <div class="card col">
+                                <img class="home-img" src="<%=box.image.url%>" class="card-img-top" alt="some error">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Title : </b>
+                                        <%=box.title%>
+                                    </h5>
+                                    <p class="card-text"><b>Price : </b>
+                                        <span>&#8377</span><%=box.price.toLocaleString("en-IN")%>
+                                    </p>
+                                    <form action="/Keydwell/show/<%=box._id%>" method="get">
+                                        <button class="btn btn-primary">Show More</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <%}%>
+                    </div>
