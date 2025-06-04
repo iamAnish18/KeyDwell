@@ -1,23 +1,89 @@
 <% layout("layouts/boilerplate.ejs") %>
 
-    <img src="<%=showdata.image.url%>" alt="some error">
-    <h4><b>Title : </b>
-        <%=showdata.title%>
-    </h4>
-    <h5><b>Description : </b>
-        <%=showdata.description%>
-    </h5>
-    <h5><b>Price : </b><span>&#8377</span><%=showdata.price.toLocaleString("en-IN")%></h5>
-    <h5><b>Email Address : </b>
-        <%=showdata.email_id%>
-    </h5>
-    <h5><b>Location : </b>
-        <%=showdata.location%>
-    </h5>
-    <h5><b>Country : </b>
-        <%=showdata.country%>
-    </h5>
-    <a href="/Keydwell/<%=showdata._id%>/Update" class="btn btn-primary">Edit</a>
-    <form action="/Keydwell/show/<%=showdata._id%>?_method=delete" method="post">
-        <button class="btn btn-danger">Delete</button>
-    </form>
+
+    <div class="show-box">
+        <img class="show-img" src="<%=showdata.image.url%>" alt="some error">
+        <h4><b>Owend by : </b>
+            <%=showdata.owner.username%>
+        </h4>
+        <h4><b>Title : </b>
+            <%=showdata.title%>
+        </h4>
+        <h5><b>Description : </b>
+            <%=showdata.description%>
+        </h5>
+        <h5><b>Price : </b><span>&#8377</span><%=showdata.price.toLocaleString("en-IN")%></h5>
+        <h5><b>Email Address : </b>
+            <%=showdata.email_id%>
+        </h5>
+        <h5><b>Location : </b>
+            <%=showdata.location%>
+        </h5>
+        <h5><b>Country : </b>
+            <%=showdata.country%>
+        </h5>
+        <% if (currentUser && (currentUser._id.toString()===showdata.owner._id.toString())) { %>
+
+            <div class="btn-box">
+                <form action="/Keydwell/<%=showdata._id%>/Update" method="get">
+                    <button class="btn btn-danger">Edit</button>
+                </form>
+                <form action="/Keydwell/show/<%=showdata._id%>?_method=delete" method="post">
+                    <button class="btn btn-primary">Delete</button>
+                </form>
+            </div>
+            <%}%>
+
+
+                <form action="/Keydwell/<%=showdata._id%>/reviews" method="post" class="reviews-box"
+                    class="needs-validation">
+                    <fieldset class="starability-slot">
+                        <legend>Rating:</legend>
+                        <input type="radio" id="no-rate" class="input-no-rate" name="reviews[rating]" value="1" checked
+                            aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="reviews[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="reviews[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="reviews[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="reviews[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="reviews[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <hr>
+                    <div class="mb-3">
+                        <label class="form-label"><b>Comment</b></label>
+                        <textarea name="reviews[comment]" required cols="10" rows="5" class="form-control"></textarea>
+                        <div class="invalid-feedback">Please Enter Comment</div>
+                    </div>
+                    <button class="btn btn-dark">Sumit</button>
+                </form>
+
+
+                <div class="review-box mt-3 mb-3 row">
+                    <h3>All Reviews</h3>
+                    <% for(let review of showdata.reviews){ %>
+                        <div class="card card-displey col-5 ms-3 mb-3" style="width: 50rem;" id="reviews-card">
+                            <div class="card-body">
+                                <h2 class="review-holder">
+                                    <%=review.author.username%>
+                                </h2>
+                                <p class="card-text"><b>Comments</b> : <%= review.comment %>
+                                </p>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" data-rating="3""><b>Rating</b> : <%= review.rating %>
+                                        <% for(let i=1;i<=5;i++){%>
+                                            <i class="fa fa-star"></i>
+                                            <%}%>
+                                </h6>
+                                <form action="/Keydwell/<%=showdata._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                    method="POST">
+                                        <button class="btn btn-sm btn-dark mb-3">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+
+    </div>
