@@ -1,37 +1,46 @@
 <% layout("layouts/boilerplate.ejs") %>
 
-<form method="post" action="/Keydwell/home">
-  <div class="mb-3">
-    <h2>Create New Listing</h2>
-  </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label"><b>Title</b></label>
-      <input type="text" class="form-control" name="newhome[title]">
-    </div>
-    <div class="mb-3">
+  <div class="form-box">
+    <form method="post" action="/Keydwell/home" novalidate class="needs-validation">
+      <div class="mb-3">
+        <h2 class="main">Create New Listing</h2>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"><b>Title</b></label>
+        <input type="text" class="form-control" name="newhome[title]" required>
+        <div class="valid-feedback">Title look good !</div>
+        <div class="invalid-feedback">Please Enter the Title Name</div>
+      </div>
+      <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"><b>Description</b></label>
-        <textarea name="newhome[description]" cols="10" rows="3" class="form-control"></textarea>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label"><b>Image</b></label>
-      <input type="url" class="form-control" name="newhome[image.url]">
-      <div id="emailHelp" class="form-text">Image will pass in url formate.</div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label"><b>Price</b></label>
-      <input type="number" class="form-control" name="newhome[price]">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label"><b>Email Address</b></label>
-      <input type="email" class="form-control" name="newhome[email_id]">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label"><b>Location</b></label>
-      <input type="text" class="form-control" name="newhome[location]">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label"><b>Country</b></label>
-      <input type="text" class="form-control" name="newhome[country]">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        <textarea name="newhome[description]" required cols="10" rows="3" class="form-control"></textarea>
+        <div class="invalid-feedback">Please Enter the fullfill Description</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Image</b></label>
+        <input type="url" class="form-control" name="newhome[image]">
+        <div id="emailHelp" class="form-text">Image will pass in url formate.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Price</b></label>
+        <input type="number" required class="form-control" name="newhome[price]">
+        <div class="invalid-feedback">Please Enter the Price Name</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Email Address</b></label>
+        <input type="email" required class="form-control" name="newhome[email_id]">
+        <div class="invalid-feedback">Please Enter the valid Email Address Name</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Location</b></label>
+        <input type="text" required class="form-control" name="newhome[location]">
+        <div class="invalid-feedback">Please Enter the Location Name</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><b>Country</b></label>
+        <input type="text" required class="form-control" name="newhome[country]">
+        <div class="invalid-feedback">Please Enter the Country Name</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
