@@ -72,10 +72,29 @@
         padding-left: 1rem !important;
         font-size: 2rem !important;
     }
+        .flex-reviews{
+        width: 100% !important;
+        height: 15vh !important;
+    }
+    .flex{
+        width: 90% !important;
+    }
+    .review-holder{
+        font-size: 5vw !important;
+    }
+    #reviews-card{
+        width: 95% !important;
+        display: flex !important;
+        justify-content: center !important;
+        height: 22vh !important;  
+    }
+    #review-holder{
+        font-size: 3vw !important;
+    }
 }
 
 #reviews-card {
-    height: 65vh !important;
+    height: 35vh !important;
     border: 1px solid black !important;
 }
 
