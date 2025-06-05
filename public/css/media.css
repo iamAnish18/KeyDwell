@@ -93,9 +93,32 @@
     }
 }
 
-#reviews-card {
-    height: 35vh !important;
+@media (max-width:500px) {
+    a {
+        font-size: 3.5vw !important;
+    }
+    .card-body {
+        height: 10vh !important;
+    }
+    input,
+    textarea {
+        padding-left: 1rem !important;
+        width: 98% !important;
+        font-size: 1.5rem !important;
+        border-radius: 1rem !important;
+    }
+    #reviews-card {
+    height: 10vh !important;
     border: 1px solid black !important;
+}
+.review-holder {
+    border-bottom: 1px solid black !important;
+    font-size: 7.5vw !important;
+}
+}
+#reviews-card {
+    border: 1px solid black !important;
+    border-radius: 1vw !important;
 }
 
 .review-holder {
