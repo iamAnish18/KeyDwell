@@ -105,9 +105,31 @@ input,textarea{
   text-decoration: underline !important;
 }
 
-/* review section */
 #reviews-card{
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+}
+.log {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2vw !important;
+  align-items: center !important;
+}
+
+.flex {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+.review-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#reviews-card {
+  width: 22rem;
+  flex-grow: 1;
 }
