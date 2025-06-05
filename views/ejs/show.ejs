@@ -72,10 +72,7 @@
                                 </h2>
                                 <p class="card-text"><b>Comments</b> : <%= review.comment %>
                                 </p>
-                                <h6 class="card-subtitle mb-2 text-body-secondary" data-rating="3""><b>Rating</b> : <%= review.rating %>
-                                        <% for(let i=1;i<=5;i++){%>
-                                            <i class="fa fa-star"></i>
-                                            <%}%>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" data-rating="3""><p class="starability-result" data-rating="<%= review.rating %>"><%= review.rating %></p>
                                 </h6>
                                 <form action="/Keydwell/<%=showdata._id%>/reviews/<%=review._id%>?_method=DELETE"
                                     method="POST">
