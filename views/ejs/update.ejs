@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate.ejs") %>
 
     <div class="form-box">
-        <form method="POST" action="/Keydwell/show/<%=updatedata._id%>?_method=PUT" novalidate class="needs-validation">
+        <form method="POST" action="/Keydwell/show/<%=updatedata._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
             <div class="mb-3">
                 <h2 class="main">Edit Listing</h2>
             </div>
@@ -20,9 +20,7 @@
             <!-- image sections -->
             <div class="mb-3">
                 <label class="form-label"><b>Image</b></label>
-                <input type="text" required class="form-control" name="updatedata[image.url]"
-                    value="<%= updatedata.image.url %>">
-                <div id="emailHelp" class="form-text">Image will pass in url formate.</div>
+                <input type="file" required class="form-control" name="updatedata[image]">
             </div>
             <div class="mb-3">
                 <label class="form-label"><b>Price</b></label>
