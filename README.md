@@ -1,7 +1,13 @@
 # 🏠 KeyDwell
 
-Welcome to the **Find & Rent** project!  
-This platform helps people discover new places and find homes for rent, making travel and hosting easier for everyone.
+Welcome to the **KeyDwell – Find & Rent** project!  
+KeyDwell is a **full-stack web application** designed to make discovering, listing, and renting homes seamless for travelers and homeowners. With a modern frontend, robust backend, and clear architectural patterns, this platform empowers users to explore beautiful destinations or list their own properties for others to enjoy.
+
+---
+
+## 🌐 Project Overview
+
+KeyDwell delivers an end-to-end solution for home and vacation rental, built with the **MVC (Model-View-Controller) architecture**. This management system ensures the codebase is well-organized, modular, and easy to maintain or extend. Every feature— from interactive UI to secure data management— is structured for clarity and scalability.
 
 ---
 
@@ -12,6 +18,9 @@ This platform helps people discover new places and find homes for rent, making t
 - **Dynamic UI:** Interactive and responsive user interface for a seamless experience.
 - **RESTful Backend:** Communication between frontend and backend is powered by RESTful APIs.
 - **User-Friendly:** Designed for both travelers and homeowners to use with ease.
+- **MVC Code Management:** Clean separation of concerns using the MVC model for easier readability and maintainability.
+- **Robust Data Validation:** Ensures all data is validated before entering the system.
+- **Custom Error Handling:** Friendly and descriptive errors for a better developer and user experience.
 
 ---
 
@@ -30,6 +39,58 @@ This platform helps people discover new places and find homes for rent, making t
 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="24"/> | **Joi**               | Library for data validation (used to validate form data on backend)                     |
 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="24"/> | **method-override**   | Allow overriding HTTP methods for supporting PUT/DELETE in forms                        |
 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="24"/> | **ejs-mate**          | Layout support for EJS templates                                                        |
+
+---
+
+## 🏗️ Folder Structure & MVC Architecture
+
+```
+KeyDwell/
+├── public/           # Static files (CSS, JS, images)
+├── views/            # EJS templates (View layer)
+│   ├── listings/     # Listing-related templates
+│   ├── users/        # User authentication templates
+│   └── partials/     # Common partial views (header, footer, etc.)
+├── routes/           # Route definitions (Controller layer)
+│   ├── listings.js   # Routes for listing CRUD operations
+│   └── users.js      # Routes for authentication & user logic
+├── models/           # Mongoose models (Model layer)
+│   └── Listing.js    # Listing schema/model
+│   └── User.js       # User schema/model
+├── controllers/      # Request handlers (Controller logic)
+│   ├── listings.js   # Listing controller functions
+│   └── users.js      # User controller functions
+├── middlewares/      # Custom middleware (error handling, validation, etc.)
+├── app.js            # Main application entry point, sets up Express, DB, routes
+├── package.json      # Project metadata and dependencies
+└── README.md         # Project documentation
+```
+
+**MVC Model:**
+
+- **Model:** All schemas and database logic (in `/models`).
+- **View:** All EJS templates and public assets (in `/views` and `/public`).
+- **Controller:** All business and request logic (in `/controllers` and `/routes`).
+
+---
+
+## 📋 Route Structure Explained
+
+| Route                   | HTTP Method | Description                           | File/Folder         |
+|-------------------------|-------------|---------------------------------------|---------------------|
+| `/Keydwell/home`        | GET         | Home page                             | `routes/listings.js`, `views/listings/` |
+| `/listings`             | GET         | List all available properties         | `routes/listings.js`|
+| `/listings/new`         | GET         | Form to create a new listing          | `routes/listings.js`|
+| `/listings`             | POST        | Add new property to listings          | `routes/listings.js`|
+| `/listings/:id`         | GET         | View single property details          | `routes/listings.js`|
+| `/listings/:id/edit`    | GET         | Edit form for an existing listing     | `routes/listings.js`|
+| `/listings/:id`         | PUT         | Update listing details                | `routes/listings.js`|
+| `/listings/:id`         | DELETE      | Delete a listing                      | `routes/listings.js`|
+| `/register`             | GET/POST    | User registration                     | `routes/users.js`   |
+| `/login`                | GET/POST    | User login                            | `routes/users.js`   |
+| `/logout`               | GET         | User logout                           | `routes/users.js`   |
+
+*All routes are mapped to controller functions for clear separation and easier debugging.*
 
 ---
 
@@ -167,34 +228,33 @@ module.exports.keydataSchema = Joi.object({
    npm install ejs
    npm install mongoose
    npm install joi
-   npm install methode-override
+   npm install method-override
    npm install ejs-mate
+   npm install cloudinary
+   npm install connect-flash
+   npm install cookie-parser
+   npm install dotenv
+   npm install multer
+   npm install multer-storage-cloudinary
+   npm install passport
+   npm install passport-local
+   npm install passport-local-mongoose
+   npm install express-session
+   npm install ejs-lint
    ```
 
 2. **Start your MongoDB server**, then run the app:
     ```sh
-    main.js
+    node app.js
     ```
 
----
-3.. Run the application:
-
+3. **Run the application:**
    ```bash
-   npm start : http://localhost:3000/Keydwell/home
+   npm start
+   # Visit: http://localhost:3000/Keydwell/home
    ```
-4.## Folder Structure
 
-```
-HomeKey/
-├── public/           # Static files (CSS, JS, images)
-├── views/            # EJS templates
-├── routes/           # Routes for handling API and web requests
-├── models/           # Database models
-├── controllers/      # Request handlers
-├── app.js            # Entry point of the app
-├── middlewares/      # Custom middleware (error handling, etc.)
-└── package.json      # Project metadata and dependencies
-```
+---
 
 ## 🤝 Contributing
 
