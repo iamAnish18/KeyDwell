@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate.ejs") %>
 
   <div class="form-box">
-    <form method="post" action="/Keydwell/home" novalidate class="needs-validation">
+    <form method="post" action="/Keydwell/home" novalidate class="needs-validation" enctype="multipart/form-data">
       <div class="mb-3">
         <h2 class="main">Create New Listing</h2>
       </div>
@@ -17,10 +17,10 @@
         <div class="invalid-feedback">Please Enter the fullfill Description</div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label"><b>Image</b></label>
-        <input type="url" class="form-control" name="newhome[image]">
-        <div id="emailHelp" class="form-text">Image will pass in url formate.</div>
+        <label for="exampleInputPassword1" class="form-label"><b>Upload Image</b></label>
+        <input type="file" class="form-control" name="newhome[image]">
       </div>
+
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"><b>Price</b></label>
         <input type="number" required class="form-control" name="newhome[price]">
